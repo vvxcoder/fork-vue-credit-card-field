@@ -1,0 +1,162 @@
+@import "~bootstrap/scss/functions";
+@import "~bootstrap/scss/variables";
+@import "~vue-interface/src/scss/custom-fields";
+
+.credit-card-field {
+  & > .form-group {
+    margin-bottom: 0;
+    border-radius: 0.25em;
+    border: 1px solid $gray-300;
+    box-shadow: 0 0 0.5em $gray-100;
+    background: lighten($gray-100, 2%);
+  }
+
+  .credit-card-field-rows .form-group {
+    margin-bottom: 0;
+  }
+
+  &.has-errors {
+    & > .form-group {
+      border-color: $danger;
+    }
+
+    .is-invalid.custom-input-field .custom-control,
+    .is-invalid.custom-select {
+      color: $danger;
+      background-color: lighten($danger, 45%);
+    }
+  }
+
+  .credit-card-field-rows {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .credit-card-field-row {
+    position: relative;
+    flex-direction: row;
+
+    &:first-child .form-group-inner,
+    &:first-child .custom-control {
+      border-top-left-radius: 0.25em;
+      border-top-right-radius: 0.25em;
+    }
+
+    &:last-child {
+      & > :last-child .form-group-inner,
+      & > :last-child .custom-control {
+        border-bottom-right-radius: 0.25em;
+      }
+
+      & > :first-child .form-group-inner,
+      & > :first-child .custom-control {
+        border-bottom-left-radius: 0.25em;
+      }
+
+      &:not(:first-child) > :not(:last-child) {
+        .custom-select,
+        .custom-control {
+          border-right: 1px solid $gray-300;
+        }
+      }
+    }
+
+    &:not(:last-child) {
+      border-bottom: 1px solid $gray-300;
+    }
+
+    &.has-error {
+      &:not(:last-child) {
+      }
+
+      .credit-card-field-icon {
+        color: $danger;
+      }
+    }
+
+    &.d-flex .form-group {
+      // border-color: $danger;
+    }
+
+    &.d-flex > div {
+      flex: 1;
+    }
+
+    .has-focus {
+      position: relative;
+      z-index: 5;
+    }
+
+    .invalid-feedback {
+      display: none !important;
+    }
+  }
+
+  .custom-input-field .custom-control,
+  .custom-select-field .custom-select,
+  .custom-select-field .form-group-inner {
+    border: 0;
+    background: inherit;
+    border-radius: inherit;
+
+    &:after {
+      border-left: none;
+    }
+
+    &:disabled {
+      background: $input-disabled-bg;
+    }
+  }
+
+  .custom-select,
+  .custom-select:active,
+  .custom-select:focus,
+  .custom-select.is-valid,
+  .custom-select.is-invalid {
+    &:focus {
+      box-shadow: none;
+    }
+  }
+
+  .custom-select-field > label {
+    z-index: 1;
+  }
+
+  .credit-card-icons {
+    position: absolute;
+    top: 0;
+    right: 0.25em;
+    width: 2.5em;
+    height: 100%;
+    z-index: 2;
+  }
+
+  .credit-card-field-icon-card {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 2.5em;
+    height: 100%;
+
+    &.animated {
+      animation-duration: 333ms;
+      animation-timing-function: ease-in;
+    }
+
+    .credit-card-field-icon {
+      height: 100%;
+      width: 2.5em;
+      padding: 0.25em;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 1;
+      font-size: 1em;
+    }
+  }
+
+  &.has-errors .invalid-feedback {
+    display: block;
+    margin-bottom: 1rem;
+  }
+}
